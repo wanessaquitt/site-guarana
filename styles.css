@@ -284,7 +284,7 @@ ul{
 }
 
 .media {
-  aspect-ratio: 16 / 9;
+  height: 260px;
   overflow: hidden;
   border-radius: 16px;
 }
@@ -293,7 +293,9 @@ ul{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
+
 
 
 
