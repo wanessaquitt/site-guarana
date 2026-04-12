@@ -1,66 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Consolidated Page</title>
-    <style>
-        .tabs {
-            display: flex;
-            cursor: pointer;
-        }
-        .tab {
-            flex: 1;
-            padding: 10px;
-            background: #f1f1f1;
-            text-align: center;
-        }
-        .tab.active {
-            background: #ccc;
-        }
-        .content {
-            display: none;
-            padding: 20px;
-        }
-        .content.active {
-            display: block;
-        }
-    </style>
+    <title>Cadeias</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" id="cadeiasTab" class="active">Cadeias</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="tabs">
+            <button class="tablinks" onclick="openTab(event, 'Produtiva')">Produtiva</button>
+            <button class="tablinks" onclick="openTab(event, 'Suprimentos')">Suprimentos</button>
+            <button class="tablinks" onclick="openTab(event, 'Valor')">Valor</button>
+        </div>
 
-    <div class="tabs">
-        <div class="tab active" onclick="showContent('produtiva')">Produtiva</div>
-        <div class="tab" onclick="showContent('suprimentos')">Suprimentos</div>
-        <div class="tab" onclick="showContent('valor')">Valor</div>
-    </div>
+        <div id="Produtiva" class="tabcontent">
+            <h2>Base Agrícola</h2>
+            <p>[Content from produtiva.html]</p>
+            <h2>Processamento</h2>
+            <p>[Content from produtiva.html]</p>
+            <h2>Envase</h2>
+            <p>[Content from produtiva.html]</p>
+            <h2>Relevância</h2>
+            <p>[Content from produtiva.html]</p>
+        </div>
 
-    <div id="produtiva" class="content active">
-        <h2>Produtiva</h2>
-        <p>Full content from the produtiva page goes here.</p>
-    </div>
+        <div id="Suprimentos" class="tabcontent" style="display:none;">
+            <h2>Logística Entrada</h2>
+            <p>[Content from suprimentos.html]</p>
+            <h2>Produção Regionalizada</h2>
+            <p>[Content from suprimentos.html]</p>
+            <h2>Logística Saída</h2>
+            <p>[Content from suprimentos.html]</p>
+            <h2>Sustentabilidade</h2>
+            <p>[Content from suprimentos.html]</p>
+        </div>
 
-    <div id="suprimentos" class="content">
-        <h2>Suprimentos</h2>
-        <p>Full content from the suprimentos page goes here.</p>
-    </div>
-
-    <div id="valor" class="content">
-        <h2>Valor</h2>
-        <p>Full content from the valor page goes here.</p>
-    </div>
-
+        <div id="Valor" class="tabcontent" style="display:none;">
+            <h2>Atividades Primárias</h2>
+            <p>[Content from valor.html]</p>
+            <h2>Marketing/Apoio</h2>
+            <p>[Content from valor.html]</p>
+            <h2>Valor Percebido</h2>
+            <p>[Content from valor.html]</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 Wanessaquitt. Todos os direitos reservados.</p>
+    </footer>
     <script>
-        function showContent(tab) {
-            const contents = document.querySelectorAll('.content');
-            const tabs = document.querySelectorAll('.tab');
-            contents.forEach(content => content.classList.remove('active'));
-            tabs.forEach(tabItem => tabItem.classList.remove('active'));
-            document.getElementById(tab).classList.add('active');
-            document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";  
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
     </script>
-
 </body>
 </html>
