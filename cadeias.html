@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadeias</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .tab { display: none; }
+        .tab-button { padding: 10px; cursor: pointer; border: none; background-color: #f1f1f1; }
+        .tab-button.active { background-color: #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Cadeias</h1>
+    <div>
+        <button class="tab-button active" onclick="showTab('produtiva')">Cadeia Produtiva</button>
+        <button class="tab-button" onclick="showTab('suprimentos')">Cadeia de Suprimentos</button>
+        <button class="tab-button" onclick="showTab('valor')">Cadeia de Valor</button>
+    </div>
+    <div id="produtiva" class="tab" style="display: block;">
+        <!-- Content from produtiva.html -->
+    </div>
+    <div id="suprimentos" class="tab">
+        <!-- Content from suprimentos.html -->
+    </div>
+    <div id="valor" class="tab">
+        <!-- Content from valor.html -->
+    </div>
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const buttons = document.querySelectorAll('.tab-button');
+            tabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            document.getElementById(tabName).style.display = 'block';
+            document.querySelector(`.tab-button[onclick*='${tabName}']`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
