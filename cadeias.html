@@ -1,45 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadeias</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Consolidated Page</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .tab { display: none; }
-        .tab-button { padding: 10px; cursor: pointer; border: none; background-color: #f1f1f1; }
-        .tab-button.active { background-color: #ccc; }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+        }
+        .tab {
+            flex: 1;
+            padding: 10px;
+            background: #f1f1f1;
+            text-align: center;
+        }
+        .tab.active {
+            background: #ccc;
+        }
+        .content {
+            display: none;
+            padding: 20px;
+        }
+        .content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <h1>Cadeias</h1>
-    <div>
-        <button class="tab-button active" onclick="showTab('produtiva')">Cadeia Produtiva</button>
-        <button class="tab-button" onclick="showTab('suprimentos')">Cadeia de Suprimentos</button>
-        <button class="tab-button" onclick="showTab('valor')">Cadeia de Valor</button>
+
+    <div class="tabs">
+        <div class="tab active" onclick="showContent('produtiva')">Produtiva</div>
+        <div class="tab" onclick="showContent('suprimentos')">Suprimentos</div>
+        <div class="tab" onclick="showContent('valor')">Valor</div>
     </div>
-    <div id="produtiva" class="tab" style="display: block;">
-        <!-- Content from produtiva.html -->
+
+    <div id="produtiva" class="content active">
+        <h2>Produtiva</h2>
+        <p>Full content from the produtiva page goes here.</p>
     </div>
-    <div id="suprimentos" class="tab">
-        <!-- Content from suprimentos.html -->
+
+    <div id="suprimentos" class="content">
+        <h2>Suprimentos</h2>
+        <p>Full content from the suprimentos page goes here.</p>
     </div>
-    <div id="valor" class="tab">
-        <!-- Content from valor.html -->
+
+    <div id="valor" class="content">
+        <h2>Valor</h2>
+        <p>Full content from the valor page goes here.</p>
     </div>
+
     <script>
-        function showTab(tabName) {
+        function showContent(tab) {
+            const contents = document.querySelectorAll('.content');
             const tabs = document.querySelectorAll('.tab');
-            const buttons = document.querySelectorAll('.tab-button');
-            tabs.forEach(tab => {
-                tab.style.display = 'none';
-            });
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-            document.getElementById(tabName).style.display = 'block';
-            document.querySelector(`.tab-button[onclick*='${tabName}']`).classList.add('active');
+            contents.forEach(content => content.classList.remove('active'));
+            tabs.forEach(tabItem => tabItem.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
         }
     </script>
+
 </body>
 </html>
